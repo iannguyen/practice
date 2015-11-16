@@ -16,25 +16,24 @@ function isPalindrome(word) {
 }
 
 // Easy
-function palindromeIndex(input) {
-  var parsed = input.split("\n");
-  var cases = parseInt(parsed[0]);
-  var words = parsed.slice(1, parsed.length);
+function palindromeIndex(words) {
   var results = [];
 
   words.forEach(function(word) {
     var palIdx = isPalindrome(word);
     var palOppIdx = word.length - 1 - palIdx;
 
-    if (palIdx === (-1)) { results.push(palIdx); }
-    else {
-      if (word[(palIdx + 1)] === word[palOppIdx] && word[palIdx + 2] == word[palOppIdx - 1]) {
+    if (palIdx === (-1)) {
+      results.push(palIdx);
+    } else {
+      if (word[(palIdx + 1)] === word[palOppIdx] &&
+        word[palIdx + 2] == word[palOppIdx - 1]) {
         results.push(palIdx);
-      }
-      else {
+      } else {
         results.push(palOppIdx);
       }
     }
   });
+
   console.log(results.join("\n"));
 }
