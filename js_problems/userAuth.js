@@ -1,7 +1,7 @@
 (function(root) {
   'use strict';
 
-  root.User = function User(userEmail) {
+  root.User = function(userEmail) {
     var email = userEmail;
     var password;
 
@@ -15,13 +15,13 @@
       }
     };
 
-    User.prototype.setPassword = function(userPassword) {
-      password = userPassword;
-    };
-
-    // this.setPassword = function(userPassword) {
+    // User.prototype.setPassword = function(userPassword) {
     //   password = userPassword;
     // };
+
+    this.setPassword = function(userPassword) {
+      password = userPassword;
+    };
 
   };
 
