@@ -15,10 +15,6 @@
       }
     };
 
-    // User.prototype.setPassword = function(userPassword) {
-    //   password = userPassword;
-    // };
-
     this.setPassword = function(userPassword) {
       password = userPassword;
     };
