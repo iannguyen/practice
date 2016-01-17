@@ -5,10 +5,8 @@ Array.prototype.quickSort = function(start, len) {
   if (len < 2) {
     return this;
   }
-  
+
 };
-
-
 
 Array.prototype.swap = function (idx1, idx2) {
   var temp = this[idx1];
