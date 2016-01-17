@@ -10,7 +10,7 @@ def make_change(amount, coins)
     coins.each do |coin|
       break if coin > amt
 
-      remainder = amt - coin.round
+      remainder = (amt - coin).round
       optimal = [coins_count[remainder] + 1, coins_count[-1] + 1].min
       next if coins_count[amt] && coins_count[amt] < optimal
 
@@ -36,4 +36,4 @@ def make_change(amount, coins)
   print 'total:' + "\n" + "#{change.inject(:+)}" + "\n" + "\n"
 end
 
-print make_change(55.12, [0.77, 1.23, 4, 9.51, 500])
+print make_change(55.12, [0.77,1.23, 4, 9.51, 500])
