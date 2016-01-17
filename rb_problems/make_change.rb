@@ -10,23 +10,31 @@ def make_change(amount, coins)
     coins.each do |coin|
       break if coin > amt
 
-      remainder = (amt - coin).round
-      optimal = [coins_count[remainder] + 1, coins_count[-1] + 1].min
+      lower = (amt - coin).floor
+      upper = (amt - coin).ceil
+      lower_optimal = [coins_count[lower] + 1, coins_count[-1] + 1].min
+
+      if coins_count[upper]
+        optimal = [lower_optimal, coins_count[upper] + 1].min
+      else
+        optimal = lower_optimal
+      end
+
       next if coins_count[amt] && coins_count[amt] < optimal
 
       coins_count[amt] = optimal
 
-      if !last_coin_array[remainder].zero?
-        last_coin_array[amt] = last_coin_array[remainder]
+      if !last_coin_array[lower].zero?
+        last_coin_array[amt] = last_coin_array[lower]
       else
         last_coin_array[amt] = coin
       end
     end
   end
 
-  until amount.floor <= 0
+  until amount <= 0
     change << last_coin_array[amount]
-    amount -= last_coin_array[amount]
+    amount = (amount - last_coin_array[amount]).round
   end
 
   print 'coin_count:' + "\n" + "#{coins_count}" + "\n" + "\n"
@@ -36,4 +44,12 @@ def make_change(amount, coins)
   print 'total:' + "\n" + "#{change.inject(:+)}" + "\n" + "\n"
 end
 
-print make_change(55.12, [0.77,1.23, 4, 9.51, 500])
+# print make_change(2, [0.77, 1.23, 4, 5, 9.51, 500])
+
+# def lets_go(n)
+#   n.times do |n|
+#     make_change(n, [0.77, 1.23, 4, 5, 9.51, 500])
+#   end
+# end
+#
+# print lets_go(10000)
