@@ -29,11 +29,11 @@ def make_change(amount, coins)
     amount -= last_coin_array[amount]
   end
 
-  print "coin_count" + "\n" + "#{coins_count}" + "\n" + "\n"
-  print "last_coin_array" + "\n" + "#{last_coin_array}" + "\n" + "\n"
+  print 'coin_count:' + "\n" + "#{coins_count}" + "\n" + "\n"
+  print 'last_coin_array:' + "\n" + "#{last_coin_array}" + "\n" + "\n"
 
-  print "change" + "\n" + "#{change}" + "\n" + "\n"
-
+  print 'change:' + "\n" + "#{change.sort!.reverse!}" + "\n" + "\n"
+  print 'total:' + "\n" + "#{change.inject(:+)}" + "\n" + "\n"
 end
 
-print make_change(55.12, [0.77,1.23,5.2,7.1,9.7,10.11])
+print make_change(55.12, [0.77, 1.23, 4, 9.51, 500])
