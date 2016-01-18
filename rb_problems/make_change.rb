@@ -3,7 +3,7 @@ require 'byebug'
 def make_change(amount, coins)
   coins_count = [0]
   last_coin_array = [0]
-  amount = amount.floor
+  amount = amount.round
   change = []
 
   (1..amount).each do |amt|
@@ -44,7 +44,7 @@ def make_change(amount, coins)
   print 'total:' + "\n" + "#{change.inject(:+)}" + "\n" + "\n"
 end
 
-# print make_change(2, [0.77, 1.23, 4, 5, 9.51, 500])
+print make_change(10, [0.77, 1.23, 4, 5, 9.51, 500])
 
 # def lets_go(n)
 #   n.times do |n|
