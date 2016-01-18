@@ -1,6 +1,9 @@
 require 'byebug'
+
 class BPTable
   attr_reader :bets, :payouts, :max, :bets_hash, :payouts_hash, :bp_table
+
+  UPPER_CONST = 1.05
 
   def initialize(bets, payouts)
     @bets = bets
@@ -35,30 +38,36 @@ class BPTable
 
     (1..max).each do |amt|
       items.each do |item|
-        break if item > amt
-
-        lower = (amt - item).floor
-        upper = (amt - item).ceil
-
-        if item_count[lower].nil?
-          item_count[lower] = 0
-          last_items[lower] = 0
+        if item > amt && item <= (amt * UPPER_CONST)
+          item_count[amt] = 1
+          last_items[amt] = item
+          next
+        elsif item > (amt * UPPER_CONST)
+          break
         end
 
-        lower_optimal = [item_count[lower] + 1, item_count[-1] + 1].min
+        low_rem = (amt - item).floor
+        upper_rem = (amt - item).ceil
 
-        if item_count[upper]
-          optimal = [lower_optimal, item_count[upper] + 1].min
+        if item_count[low_rem].nil?
+          item_count[low_rem] = 0
+          last_items[low_rem] = 0
+        end
+
+        low_rem_optimal = [item_count[low_rem] + 1, item_count[-1] + 1].min
+
+        if item_count[upper_rem]
+          optimal = [low_rem_optimal, item_count[upper_rem] + 1].min
         else
-          optimal = lower_optimal
+          optimal = low_rem_optimal
         end
 
         next if item_count[amt] && item_count[amt] < optimal
 
         item_count[amt] = optimal
 
-        if !last_items[lower].zero?
-          last_items[amt] = last_items[lower]
+        if !last_items[low_rem].zero?
+          last_items[amt] = last_items[low_rem]
         else
           last_items[amt] = item
         end
@@ -85,7 +94,6 @@ class BPTable
       if optimal.empty?
         success = true
         break
-
       else
         optimal.each do |item|
           if !@bets_hash[item].empty?
@@ -100,9 +108,7 @@ class BPTable
             break
           end
         end
-
       end
-
     end
     payment
   end
@@ -145,4 +151,14 @@ def lets_go(n)
   end
 end
 
-lets_go(10000)
+# lets_go(10_000)
+
+bets = random_items(500)
+payouts = random_payouts(500)
+selection = [0.77, 1.23, 4, 5, 9.51, 500]
+payout = BPTable.new(bets, payouts)
+print "payout.bets: #{payout.bets}" + "\n"
+# print "random_payouts: #{payouts}" + "\n"
+print "optimal #{480}: #{payout.find_optimal(480)}" + "\n"
+print "cashout #{480}: #{payout.cashout(480)}" + "\n" + "\n"
+print "max: #{payout.max}" + "\n" + "\n"
