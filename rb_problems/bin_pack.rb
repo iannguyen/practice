@@ -159,6 +159,6 @@ selection = [0.77, 1.23, 4, 5, 9.51, 500]
 payout = BPTable.new(bets, payouts)
 print "payout.bets: #{payout.bets}" + "\n"
 # print "random_payouts: #{payouts}" + "\n"
-print "optimal #{480}: #{payout.find_optimal(480)}" + "\n"
-print "cashout #{480}: #{payout.cashout(480)}" + "\n" + "\n"
+print "optimal #{500}: #{payout.find_optimal(500)}" + "\n"
+print "cashout #{500}: #{payout.cashout(500)}" + "\n" + "\n"
 print "max: #{payout.max}" + "\n" + "\n"
