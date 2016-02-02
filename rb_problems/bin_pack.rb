@@ -100,6 +100,12 @@ class BPTable
             payment << @bets_hash[item].pop
             amount -= payment.last.round
             # dynamically adjust the max payout, [remaining_amount, next largest payout]
+            debugger
+            if @profits[idx + 1]
+              @max = [amount, @profits[idx + 1]].max
+            else
+              @max = amount
+            end
             success = true
           else
             @bets_hash.delete(item)
@@ -132,7 +138,7 @@ end
 def random_payouts(n)
   payouts = []
   n.times do
-    payouts << rand(1000)
+    payouts << rand(100)
   end
   payouts.sort!.reverse!
 end
@@ -153,12 +159,12 @@ end
 
 # lets_go(10_000)
 
-bets = random_items(500)
-payouts = random_payouts(500)
-selection = [0.77, 1.23, 4, 5, 9.51, 500]
+bets = random_items(10)
+payouts = random_payouts(10)
+# selection = [0.77, 1.23, 4, 5, 9.51, 500]
 payout = BPTable.new(bets, payouts)
 print "payout.bets: #{payout.bets}" + "\n"
 # print "random_payouts: #{payouts}" + "\n"
-print "optimal #{500}: #{payout.find_optimal(500)}" + "\n"
-print "cashout #{500}: #{payout.cashout(500)}" + "\n" + "\n"
+print "optimal #{payouts.max}: #{payout.find_optimal(payouts.max)}" + "\n"
+print "cashout #{payouts.max}: #{payout.cashout(payouts.max)}" + "\n" + "\n"
 print "max: #{payout.max}" + "\n" + "\n"
