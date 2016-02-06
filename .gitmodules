@@ -1,0 +1,3 @@
+[submodule "todomvc-ember-cli"]
+	path = todomvc-ember-cli
+	url = https://github.com/iannguyen/todomvc-ember-cli
