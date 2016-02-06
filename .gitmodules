@@ -4,3 +4,6 @@
 [submodule "ember-rails-first-project"]
 	path = ember-rails-first-project
 	url = https://github.com/iannguyen/ember-rails-first-project
+[submodule "ember-rails-devise-auth"]
+	path = ember-rails-devise-auth
+	url = https://github.com/iannguyen/ember-rails-devise-auth
