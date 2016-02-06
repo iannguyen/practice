@@ -1,3 +1,6 @@
 [submodule "todomvc-ember-cli"]
 	path = todomvc-ember-cli
 	url = https://github.com/iannguyen/todomvc-ember-cli
+[submodule "ember-rails-first-project"]
+	path = ember-rails-first-project
+	url = https://github.com/iannguyen/ember-rails-first-project
