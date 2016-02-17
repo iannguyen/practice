@@ -1,23 +1,26 @@
+require 'byebug'
+
 # Helpers
 
 def basal(str)
-  basic = ''
+  basic = []
   ltr_counter = 'a'
   seen = {}
 
   str.each_char.with_index do |ltr, idx|
-    seen[ltr] = ltr_counter if idx.zero?
+    ascii = ltr.chr
+    seen[ascii] = ltr_counter if idx.zero?
 
-    if seen[ltr]
-      basic << seen[ltr]
+    if seen[ascii]
+      basic << seen[ascii]
     else
       ltr_counter = ltr_counter.next
-      seen[ltr] = ltr_counter
+      seen[ascii] = ltr_counter
       basic << ltr_counter
     end
   end
 
-  basic
+  basic.join('-')
 end
 
 # Part 1
@@ -27,18 +30,23 @@ end
 def isomorphic(str1, str2)
   return false if str1.length != str2.length
 
-  hash = {}
+  seen1 = {}
+  seen2 = {}
 
   str1.each_char.with_index do |ltr, idx|
-    if !hash[ltr]
-      hash[ltr] = str2[idx]
+    if !seen1[ltr] && !seen2[str2[idx]]
+      seen1[ltr] = str2[idx]
+      seen2[str2[idx]] = true
     else
-      return false unless hash[ltr] == str2[idx]
+      return false unless seen1[ltr] == str2[idx]
     end
   end
 
   true
 end
+
+puts isomorphic('foo', 'bar')
+puts isomorphic('bar', 'foo')
 
 # Part 2
 # Given list of strings, determine if all are isomorphic
@@ -61,8 +69,4 @@ def iso_sets(arr)
   sets
 end
 
-puts iso_sets(['asd', 'foo', 'poo', 'bar'])
-puts iso_sets(['asdf', 'foof', 'poof', 'bars'])
-
-# puts isomorphic('foo', 'bar')
-# puts isomorphic('bar', 'foo')
+puts iso_sets(%w(asd Foo poo bar ra1 o^u uoi $^$))
