@@ -143,21 +143,25 @@ def random_payouts(n)
   payouts.sort!.reverse!
 end
 
-def lets_go(n)
-  n.times do
-    bets = random_items(500)
-    payouts = random_payouts(1000)
-    random_number = rand(1000)
-    payout = BPTable.new(bets, payouts)
-    print "random_items: #{bets}" + "\n"
-    print "random_payouts: #{payouts}" + "\n"
-    print "optimal #{random_number}: #{payout.find_optimal(random_number)}" + "\n"
-    print "cashout #{random_number}: #{payout.cashout(random_number)}" + "\n" + "\n"
-    print "max: #{payout.max}" + "\n" + "\n"
-  end
-end
+# Performance and reliability test
+
+# def lets_go(n)
+#   n.times do
+#     bets = random_items(500)
+#     payouts = random_payouts(1000)
+#     random_number = rand(1000)
+#     payout = BPTable.new(bets, payouts)
+#     print "random_items: #{bets}" + "\n"
+#     print "random_payouts: #{payouts}" + "\n"
+#     print "optimal #{random_number}: #{payout.find_optimal(random_number)}" + "\n"
+#     print "cashout #{random_number}: #{payout.cashout(random_number)}" + "\n" + "\n"
+#     print "max: #{payout.max}" + "\n" + "\n"
+#   end
+# end
 
 # lets_go(10_000)
+
+# Tests
 
 bets = random_items(10)
 payouts = random_payouts(10)
