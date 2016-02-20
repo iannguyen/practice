@@ -100,7 +100,6 @@ class BPTable
             payment << @bets_hash[item].pop
             amount -= payment.last.round
             # dynamically adjust the max payout, [remaining_amount, next largest payout]
-            debugger
             if @profits[idx + 1]
               @max = [amount, @profits[idx + 1]].max
             else

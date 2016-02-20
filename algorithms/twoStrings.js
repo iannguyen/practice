@@ -1,4 +1,5 @@
-// Medium
+// Given 2 strings, find if there is a string that appears in both strings
+
 function twoStrings(words) {
   var shorter, longer;
   var longerHash = {};

@@ -1,4 +1,5 @@
 // Helpers
+
 function isPalindrome(word) {
   var pal = -1;
   var i = 0;
@@ -16,6 +17,7 @@ function isPalindrome(word) {
 }
 
 // Easy
+
 function palindromeIndex(words) {
   var results = [];
 

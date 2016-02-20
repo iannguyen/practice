@@ -11,3 +11,5 @@ def permutations(arr)
   end
   new_perms
 end
+
+# print permutations([1,2,1,3]).uniq.length

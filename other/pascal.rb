@@ -1,3 +1,5 @@
+# Pascal triangle with binomial theorem
+
 def factorial(n)
   (1..n).inject(:*)
 end
