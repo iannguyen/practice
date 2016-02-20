@@ -1,6 +1,6 @@
-require 'byebug'
+# Isomorphic Strings
 
-# Helpers
+# Helper function
 
 def basal(str)
   basic = []
@@ -45,13 +45,15 @@ def isomorphic(str1, str2)
   true
 end
 
-puts isomorphic('foo', 'bar')
-puts isomorphic('bar', 'foo')
-
 # Part 2
 # Given list of strings, determine if all are isomorphic
 
-def iso_list(_arr)
+def iso_list(arr)
+  arr.each_with_index do |str, idx|
+    adj = arr[idx + 1]
+    return false if adj && !isomorphic(str, adj)
+  end
+  true
 end
 
 # Part 3
@@ -68,5 +70,3 @@ def iso_sets(arr)
 
   sets
 end
-
-puts iso_sets(%w(asd Foo poo bar ra1 o^u uoi $^$))
