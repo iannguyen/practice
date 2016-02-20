@@ -1,28 +1,5 @@
 # Isomorphic Strings
 
-# Helper function
-
-def basal(str)
-  basic = []
-  ltr_counter = 'a'
-  seen = {}
-
-  str.each_char.with_index do |ltr, idx|
-    ascii = ltr.chr
-    seen[ascii] = ltr_counter if idx.zero?
-
-    if seen[ascii]
-      basic << seen[ascii]
-    else
-      ltr_counter = ltr_counter.next
-      seen[ascii] = ltr_counter
-      basic << ltr_counter
-    end
-  end
-
-  basic.join('-')
-end
-
 # Part 1
 # Determine if 2 strings are isomorphic (each letter has a 1-1 relational mapping)
 # i.e. 'asdf' is isomorphic to 'fdsa'
@@ -69,4 +46,27 @@ def iso_sets(arr)
   end
 
   sets
+end
+
+# Helper function
+
+def basal(str)
+  basic = []
+  ltr_counter = 'a'
+  seen = {}
+
+  str.each_char.with_index do |ltr, idx|
+    ascii = ltr.chr
+    seen[ascii] = ltr_counter if idx.zero?
+
+    if seen[ascii]
+      basic << seen[ascii]
+    else
+      ltr_counter = ltr_counter.next
+      seen[ascii] = ltr_counter
+      basic << ltr_counter
+    end
+  end
+
+  basic.join('-')
 end

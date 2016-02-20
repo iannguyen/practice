@@ -1,4 +1,4 @@
-# Given arr, replace each element with the product of all of the other elements without using division in O(n)
+# Given arr, replace each element with the product of all of the other elements without using division with O(n) time complexity
 
 def productify(arr)
   result = []
