@@ -12,6 +12,12 @@ def make_change(amount, coins)
 
       lower = (amt - coin).floor
       upper = (amt - coin).ceil
+
+      if coins_count[lower].nil?
+        coins_count[lower] = 0
+        last_coin_array[lower] = 0
+      end
+
       lower_optimal = [coins_count[lower] + 1, coins_count[-1] + 1].min
 
       optimal = if coins_count[upper]
@@ -39,7 +45,6 @@ def make_change(amount, coins)
 
   print 'coin_count:' + "\n" + coins_count.to_s + "\n" + "\n"
   print 'last_coin_array:' + "\n" + last_coin_array.to_s + "\n" + "\n"
-
   print 'change:' + "\n" + change.sort!.reverse!.to_s + "\n" + "\n"
   print 'total:' + "\n" + change.inject(:+).to_s + "\n" + "\n"
 end

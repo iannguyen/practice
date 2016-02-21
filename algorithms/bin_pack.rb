@@ -56,21 +56,21 @@ class BPTable
 
         low_rem_optimal = [item_count[low_rem] + 1, item_count[-1] + 1].min
 
-        if item_count[upper_rem]
-          optimal = [low_rem_optimal, item_count[upper_rem] + 1].min
-        else
-          optimal = low_rem_optimal
-        end
+        optimal = if item_count[upper_rem]
+                    [low_rem_optimal, item_count[upper_rem] + 1].min
+                  else
+                    low_rem_optimal
+                  end
 
         next if item_count[amt] && item_count[amt] < optimal
 
         item_count[amt] = optimal
 
-        if !last_items[low_rem].zero?
-          last_items[amt] = last_items[low_rem]
-        else
-          last_items[amt] = item
-        end
+        last_items[amt] = if !last_items[low_rem].zero?
+                            last_items[low_rem]
+                          else
+                            item
+                          end
       end
     end
     @bp_table = last_items
@@ -100,11 +100,11 @@ class BPTable
             payment << @bets_hash[item].pop
             amount -= payment.last.round
             # dynamically adjust the max payout, [remaining_amount, next largest payout]
-            if @profits[idx + 1]
-              @max = [amount, @profits[idx + 1]].max
-            else
-              @max = amount
-            end
+            @max = if @profits[idx + 1]
+                     [amount, @profits[idx + 1]].max
+                   else
+                     amount
+                   end
             success = true
           else
             @bets_hash.delete(item)
