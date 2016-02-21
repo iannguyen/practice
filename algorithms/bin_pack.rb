@@ -1,5 +1,3 @@
-require 'byebug'
-
 class BPTable
   attr_reader :bets, :payouts, :max, :bets_hash, :payouts_hash, :bp_table
 

@@ -15,6 +15,5 @@ def one_change(str1, str2)
     edits += 1 unless str1[i] == str2[i]
   end
 
-  puts edits
   edits.zero? || (edits == 1 && diff <= 1) || (edits == 2 && diff == 0)
 end

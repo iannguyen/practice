@@ -13,6 +13,3 @@ def equil_idcs(a)
   end
   equils.empty? ? -1 : equils
 end
-
-print equil_idcs([1, 2, 1]).to_s + "\n"
-print equil_idcs([0, 1, -1]).to_s + "\n"
