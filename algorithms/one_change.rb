@@ -9,15 +9,12 @@ def one_change(str1, str2)
 
   edits = 0
 
-  shorter = str1.length <= str2.length ? str1 : str2
+  longer = str1.length >= str2.length ? str1 : str2
 
-  shorter.length.times do |i|
+  longer.length.times do |i|
     edits += 1 unless str1[i] == str2[i]
   end
 
-  if edits.zero? || (edits == 1 && diff == 1) || (edits == 2 && diff == 0)
-    true
-  else
-    false
-  end
+  puts edits
+  edits.zero? || (edits == 1 && diff <= 1) || (edits == 2 && diff == 0)
 end
