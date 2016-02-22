@@ -1,3 +1,6 @@
+# Integer sets with arrays
+
+# Integer set with max length, indices represent integers
 class MaxIntSet
   def initialize(max)
     @store = Array.new(max, false)
@@ -30,6 +33,7 @@ class MaxIntSet
   end
 end
 
+# Abstract integer set. Integers are placed in their corresponding buckets by modding by num_buckets
 class IntSet
   def initialize(num_buckets = 20)
     @store = Array.new(num_buckets) { [] }
@@ -59,6 +63,7 @@ class IntSet
   end
 end
 
+# Dynamic Resizing integer set
 class ResizingIntSet
   attr_reader :count
 
@@ -75,6 +80,7 @@ class ResizingIntSet
 
   def remove(num)
     self[num].delete(num)
+    @count -= 1
   end
 
   def include?(num)
@@ -92,9 +98,9 @@ class ResizingIntSet
   end
 
   def resize!
-    prev = @store
+    old = @store
     @store = Array.new(@count * 2) { [] }
     @count = 0
-    prev.flatten.each { |el| insert(el) }
+    old.flatten.each { |el| insert(el) }
   end
 end

@@ -1,7 +1,8 @@
 class Fixnum
-  # Fixnum#hash already implemented for you
+  # implemented
 end
 
+# Custom hash methods
 class Array
   def hash
     each_with_index.inject(0) do |intermediate_hash, (el, idx)|

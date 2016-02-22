@@ -1,5 +1,6 @@
 require_relative 'p02_hashing'
 
+# HashSet stores any data type, not just numbers by hashing before inserting
 class HashSet
   attr_reader :count
 
@@ -20,6 +21,7 @@ class HashSet
 
   def remove(key)
     self[key].delete(key)
+    @count -= 1
   end
 
   private
@@ -33,9 +35,9 @@ class HashSet
   end
 
   def resize!
-    prev = @store
+    old = @store
     @store = Array.new(num_buckets * 2) { [] }
     @count = 0
-    prev.flatten.each { |el| insert(el) }
+    old.flatten.each { |el| insert(el) }
   end
 end

@@ -1,3 +1,4 @@
+# Doubly Linked List
 class Link
   attr_accessor :key, :val, :next, :prev
 
@@ -54,7 +55,7 @@ class LinkedList
     new_link = Link.new(key, val, @tail, @tail.prev)
     @tail.prev.next = new_link
     @tail.prev = new_link
-    return "#{new_link.val} inserted."
+    "#{new_link.val} inserted."
   end
 
   def remove(key)
@@ -76,8 +77,7 @@ class LinkedList
     end
   end
 
-  # uncomment when you have `each` working and `Enumerable` included
   def to_s
-    inject([]) { |acc, link| acc << "[#{link.key}, #{link.val}]" }.join(", ")
+    inject([]) { |acc, link| acc << "[#{link.key}, #{link.val}]" }.join(', ')
   end
 end
