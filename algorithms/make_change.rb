@@ -18,7 +18,7 @@ def make_change(amount, coins)
         last_coin_array[lower] = 0
       end
 
-      lower_optimal = [coins_count[lower] + 1, coins_count[-1] + 1].min
+      lower_optimal = coins_count[lower] + 1
 
       optimal = if coins_count[upper]
                   [lower_optimal, coins_count[upper] + 1].min
@@ -38,7 +38,8 @@ def make_change(amount, coins)
     end
   end
 
-  until amount <= 0
+  until amount <= 0 || last_coin_array[amount].zero? ||
+        last_coin_array[amount].nil?
     change << last_coin_array[amount]
     amount = (amount - last_coin_array[amount]).round
   end
