@@ -55,7 +55,7 @@ class LinkedList
     new_link = Link.new(key, val, @tail, @tail.prev)
     @tail.prev.next = new_link
     @tail.prev = new_link
-    "#{new_link.val} inserted."
+    new_link
   end
 
   def remove(key)
@@ -65,7 +65,7 @@ class LinkedList
       link.next.prev = link.prev
       link.prev = nil
       link.next = nil
-      return "#{link.val} removed."
+      return link.val
     end
   end
 
