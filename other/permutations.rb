@@ -1,3 +1,5 @@
+# Write a function that returns all the possible permutations of an array
+
 def permutations(arr)
   return [arr] if arr.size == 1
   first = arr.first
@@ -11,5 +13,3 @@ def permutations(arr)
   end
   new_perms
 end
-
-# print permutations([1,2,1,3]).uniq.length
