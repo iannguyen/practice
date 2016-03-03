@@ -3,11 +3,10 @@
 require 'byebug'
 
 def square_root(num, nums = nil)
-
-  nums ||= (1..num/2).to_a
+  nums ||= (1..num / 2).to_a
   mid_point = nums.count / 2
-
   mid = nums[mid_point]
+
   case mid * mid <=> num
   when -1
     square_root(num, nums.drop(mid_point + 1))
@@ -23,3 +22,4 @@ end
 puts square_root(25)
 puts square_root(49)
 puts square_root(4)
+puts square_root(9)
