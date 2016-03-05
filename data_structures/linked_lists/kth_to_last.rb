@@ -21,11 +21,11 @@ end
 # Tests
 
 ll = LinkedList.new
+
 ll.insert(1)
 ll.insert(2)
 ll.insert(3)
 ll.insert(4)
 ll.insert(5)
-ll.insert(6)
 
 puts ll.kth_to_last(2).value
