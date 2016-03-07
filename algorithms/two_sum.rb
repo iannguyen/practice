@@ -7,7 +7,11 @@ def two_sum(arr, target)
 
   arr.each do |num|
     diff = target - num
-    return true if counts[diff] != 0
+    if diff == num
+      return true if counts[diff] >= 2
+    else
+      return true if counts[diff] != 0
+    end
   end
 
   false
@@ -15,5 +19,5 @@ end
 
 # Tests
 
-puts two_sum([1, 2, 3, 4], 6)
+puts two_sum([3, 2, 1, 4], 3)
 puts two_sum([1, 2, 3, 4], 1)
