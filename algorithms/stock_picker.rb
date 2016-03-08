@@ -2,13 +2,11 @@
 # O(n) time, O(1) memory
 
 def stock_picker(arr)
-  queue = []
   min = nil
   max = nil
   best_profit = nil
 
   arr.each_with_index do |el, idx|
-    queue << el
 
     min = { val: el, day: idx } if min.nil? || el < min[:val]
     max = { val: el, day: idx } if max.nil? || el > max[:val]
