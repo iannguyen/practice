@@ -17,3 +17,7 @@ def productify(arr)
 
   result
 end
+
+# Tests
+
+puts productify([1, 2, 3, 4])
