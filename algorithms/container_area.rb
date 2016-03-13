@@ -18,11 +18,9 @@ def max_area(heights)
     break if width == 1
 
     if heights[left] > heights[right]
-      # decrement right until you find a larger height >= left
       old_right = right
       right -= 1 until heights[right] > heights[old_right] || right - left == 1
     elsif heights[right] > heights[left]
-      # decrement left until you find a larger height >= right
       old_left = left
       left += 1 until heights[left] > heights[old_left] || right - left == 1
     else
