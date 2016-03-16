@@ -19,3 +19,7 @@ class String
     false
   end
 end
+
+# Tests
+
+p 'hello'.rotation?('llohe')
