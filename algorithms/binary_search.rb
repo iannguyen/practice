@@ -10,8 +10,7 @@ def bsearch(arr, target)
     bsearch(arr.take(mid), target)
   when 1
     left_search = bsearch(arr.drop(mid + 1), target)
-    return left_search if left_search.nil?
-    mid + 1 + left_search
+    mid + 1 + left_search if left_search
   end
 end
 
