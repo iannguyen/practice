@@ -13,7 +13,7 @@ def balanced?(node)
 end
 
 def depth(node)
-  return true if node.nil?
+  return 0 if node.nil?
 
   [depth(node.left), depth(node.right)].max + 1
 end
