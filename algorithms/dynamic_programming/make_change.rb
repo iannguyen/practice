@@ -50,4 +50,6 @@ def make_change(amount, coins)
   print 'total:' + "\n" + change.inject(:+).to_s + "\n" + "\n"
 end
 
+# Tests
+
 print make_change(40, [0.77, 1.23, 4, 5, 9.51, 500])
