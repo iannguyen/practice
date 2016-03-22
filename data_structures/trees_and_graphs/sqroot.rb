@@ -1,7 +1,5 @@
 # Write a function that finds the square root of a number, with basic arithmetic functions, in less than O(n) time. (The number will always be a perfect square)
 
-require 'byebug'
-
 def square_root(num, nums = nil)
   nums ||= (1..num / 2).to_a
   mid_point = nums.count / 2
