@@ -33,8 +33,6 @@ class BST
 end
 
 def max_height(root, cache)
-  # probably use dfs and use recursion on each of child nodes, and terminate once it's a node is nil
-  # base case will be if a node is nil, return 0, then probably add 1 to include the parent node
   return 0 unless root
 
   left_height = max_height(root.left, cache)
@@ -45,7 +43,6 @@ def max_height(root, cache)
   left_height > right_height ? left_height + 1 : right_height + 1
 end
 
-# get the heights, add them, store them in the cache
 def diameter(root, cache = {})
   return 0 unless root
 
