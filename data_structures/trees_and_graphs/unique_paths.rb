@@ -1,6 +1,6 @@
 # Given n*m grid, and only moving right or down, find the number of unique paths you can get to the bottom right, starting from the top left
 
-def uniquePaths(m, n)
+def unique_paths(m, n)
   goal = [m - 1, n - 1]
   goal_x, goal_y = goal
   count = 0
@@ -26,4 +26,6 @@ def valid_pos?(pos, m, n)
   pos_x < m && pos_y < n
 end
 
-p uniquePaths(3, 7)
+# Tests
+
+p unique_paths(3, 7)

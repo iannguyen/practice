@@ -6,9 +6,9 @@ def kth_smallest(root, k)
   return root.val if count + 1 == k
 
   if count + 1 > k
-    return kth_smallest(root.left, k)
+    kth_smallest(root.left, k)
   else
-    return kth_smallest(root.right, k - 1 - count)
+    kth_smallest(root.right, k - 1 - count)
   end
 end
 
