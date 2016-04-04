@@ -10,3 +10,7 @@ def shuffle(arr)
 
   new_arr
 end
+
+# Tests
+
+p shuffle([1, 2, 3, 4, 5])
