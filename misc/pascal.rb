@@ -13,3 +13,7 @@ end
 def triangle(nth_line)
   (0..nth_line).map { |e| binomial(nth_line, e) }
 end
+
+# Test
+
+p triangle(1)
