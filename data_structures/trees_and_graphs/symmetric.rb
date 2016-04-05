@@ -1,6 +1,6 @@
 # Write a function to determine if a binary tree is symmetric
 
-def is_symmetric(root)
+def symmetric?(root)
   return true unless root
   symmetric(root.left, root.right)
 end
