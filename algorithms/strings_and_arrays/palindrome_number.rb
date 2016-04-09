@@ -1,7 +1,7 @@
 # Given a number, determine whether the number is a palindrome. Do this without extra space.
 
 def palindrome(num)
-  return false if num < 0 || (num!=0 && num % 10 == 0)
+  return false if num < 0 || (num != 0 && num % 10 == 0)
   left = 0
   until left >= num
     left = left * 10 + num % 10
