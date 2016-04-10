@@ -17,3 +17,7 @@ end
 def password?(str)
   /[A-Z]/ =~ str ? true : false
 end
+
+# Tests
+
+p longest_password('hel09piZzuh92heS2')
